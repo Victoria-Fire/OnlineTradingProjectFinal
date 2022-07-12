@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1" author="Viktoria Reunova" context="init">
+        <sql>
+            create table lot
+            (
+                lot_id      int auto_increment,
+                name_lot    varchar(100),
+                description varchar(1000),
+                start_date  date,
+                end_date    date,
+                start_price dec(10, 2),
+                end_price   dec(10, 2),
+                status boolean,
+                constraint lot_pk primary key (lot_id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

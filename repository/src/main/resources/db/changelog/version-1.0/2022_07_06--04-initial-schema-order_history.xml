@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1" author="Viktoria Reunova" context="init">
+        <sql>
+            create table order_history
+            (
+                lot_id           int,
+                date_of_purchase date,
+                current_price    dec(10, 2),
+                id_buyer         int,
+                constraint order_history_pk primary key (lot_id),
+                constraint order_history_buyer_fk foreign key (id_buyer) references buyer (buyer_id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

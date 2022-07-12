@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1" author="Viktoria Reunova" context="init">
+        <sql>
+            create table buyer
+            (
+                buyer_id      int auto_increment,
+                name_buyer    varchar(100),
+                surname_buyer varchar(100),
+                constraint buyer_pk primary key (buyer_id)
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

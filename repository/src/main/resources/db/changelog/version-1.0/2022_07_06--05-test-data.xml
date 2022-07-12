@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="1" author="Viktoria Reunova" context="test">
+        <sql>
+            insert into buyer (name_buyer, surname_buyer)
+            values ('Джулия', 'Робертс'),
+                   ('Кира', 'Найтли'),
+                   ('Анджелина', 'Джоли'),
+                   ('Скарлетт', 'Йоханссон');
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="Viktoria Reunova" context="test">
+        <sql>
+            insert into lot (name_lot, description, start_date, end_date, start_price, end_price, status)
+            VALUES ('Серьги', 'Описание сережек', '2022-07-12', '2022-07-16', 36.0, 4.0, true),
+                   ('Брошь', 'Описание броши', '2022-07-11', '2022-07-20', 100.25, 53.0, true),
+                   ('Браслет', 'Описание браслета', '2022-07-10', '2022-07-23', 163.5, 75.5, true),
+                   ('Колье', 'Описание колье', '2022-07-08', '2022-07-30', 478.0, 47.8, true);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

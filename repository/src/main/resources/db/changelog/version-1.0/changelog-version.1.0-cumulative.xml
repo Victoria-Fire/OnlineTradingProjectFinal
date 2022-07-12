@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <include file="2022_07_06--01-initial-schema-buyer.xml" relativeToChangelogFile="true"/>
+    <include file="2022_07_06--02-initial-schema-lot.xml" relativeToChangelogFile="true"/>
+    <include file="2022_07_06--03-initial-schema-basket.xml" relativeToChangelogFile="true"/>
+    <include file="2022_07_06--04-initial-schema-order_history.xml" relativeToChangelogFile="true"/>
+    <include file="2022_07_06--05-test-data.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

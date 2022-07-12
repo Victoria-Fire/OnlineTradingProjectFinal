@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Добавить Лот</title>
+    <header th:insert="blocks/header::header"></header>
+</head>
+<body>
+<div class="bg-img">
+    <div id="header" class="container">
+        <div class="topnav">
+            <a href="buyer">Авторизация</a>
+            <a href="#">Корзина</a>
+            <!--            <%&#45;&#45;            <a href="search">Поиск</a>&#45;&#45;%>-->
+        </div>
+    </div>
+</div>
+
+<div class="topnav">
+    <a th:href="@{/}">Главная страница</a>
+    <a th:href="@{/buyer}">Пользователь</a>
+    <a href="catalog">Каталог</a>
+    <!--    <%&#45;&#45;    <a href="stok">Акция</a>&#45;&#45;%>-->
+    <a class="active" th:href="@{/admin}">Админ</a>
+</div>
+
+
+<div class="container mt-5 mb-5">
+    <h1>Добавить Лот</h1>
+    <form th:action="@{/admin/lotAdd}" th:method="post" th:object="${lot}">
+        <label>Название:
+            <input type="text" name="nameLot" id="nameLot" th:field="*{nameLot}" required placeholder="Название"
+                   class="form-control">
+        </label><br/><br/>
+        <label>Описание:
+            <input type="text" name="descriptionLot" id="descriptionLot" th:field="*{descriptionLot}" required
+                   placeholder="Описание" class="form-control">
+        </label><br/><br/>
+
+
+        <label>Начальная дата:
+            <input type="date" name="startDateLot" id="startDateLot" th:field="*{startDateLot}" required
+                   min="2000-01-01" max="2099-12-31" class="form-control">
+        </label><br/><br/>
+<!--        <label>Конечная дата:-->
+<!--            <input type="date" name="endDateLot" id="endDateLot" th:field="*{endDateLot}" required min="2000-01-01"-->
+<!--                   max="2099-12-31" class="form-control">-->
+<!--        </label><br/><br/>-->
+        <label>Начальная цена:
+            <input type="text" name="startPriceLot" id="startPriceLot" th:field="*{startPriceLot}"
+                   title="Используйте формат: 00.00" required pattern="\d+\.\d{2}"
+                   placeholder="00.00" class="form-control">
+        </label><br/><br/>
+        <label>Конечная цена:
+            <input type="text" name="endPriceLot" id="endPriceLot" th:field="*{endPriceLot}"
+                   title="Используйте формат: 00.00" required pattern="\d+\.\d{2}"
+                   placeholder="00.00" class="form-control">
+        </label><br/><br/>
+        <div class="form-check form-switch">
+            <input name="statusLot" th:field="*{statusLot}" class="form-check-input" type="checkbox" id="statusForAddLot" value="true">
+            <label class="form-check-label" for="statusForAddLot">В продажу</label><br/><br/>
+        </div>
+
+<!--        &lt;!&ndash;        <div class="span7"></div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <input type="text" name="statusLot" id="statusLot" th:field="*{statusLot}" placeholder="Введите фамилию" class="form-control"></br>&ndash;&gt;-->
+        <button type="submit" class="btn btn-outline-dark">Сохранить</button>
+        <a th:href="'/adminListLot'" class="btn btn-dark">Отмена</a>
+    </form>
+</div>
+
+</body>
+</html>

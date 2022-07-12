@@ -1,0 +1,43 @@
+.bg-img {
+
+    background-image: url("../images/two sisters.png");
+
+    min-height: 250px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+}
+
+#header.container {
+    position: absolute;
+    right: 0;
+    bottom: 175px;
+    width: auto;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: antiquewhite;
+    color: #000005;
+}
+
+.topnav a.active {
+    background-color: lightpink;
+    color: #000005;
+}
