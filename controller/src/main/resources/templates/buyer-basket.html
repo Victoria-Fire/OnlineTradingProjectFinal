@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Корзина</title>
+    <header th:insert="blocks/header::header"></header>
+</head>
+<body>
+<div class="bg-img">
+    <div id="header" class="container">
+        <div class="topnav">
+            <a href="buyer">Авторизация</a>
+            <a class="active" href="#">Корзина</a>
+            <!--            <%&#45;&#45;            <a href="search">Поиск</a>&#45;&#45;%>-->
+        </div>
+    </div>
+</div>
+
+<div class="topnav">
+    <a th:href="@{/}">Главная страница</a>
+    <a th:href="@{/buyer}">Пользователь</a>
+    <a href="#">Каталог</a>
+    <!--    <%&#45;&#45;    <a href="stok">Акция</a>&#45;&#45;%>-->
+    <a th:href="@{/admin}">Админ</a>
+</div>
+
+
+<div class="container mt-5">
+    <h1 style="text-align: center">Ваша Корзина</h1>
+
+    <div th:switch="${!getLotOfBuyer.isEmpty()}">
+        <div th:case="true" class="form-check">
+            <table class="table table-hover table-responsive-md">
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="lots : ${getLotOfBuyer}" class="alert-warning">
+                    <td th:text="${lots.nameLot}"></td>
+                    <td th:text="${lots.descriptionLot}"></td>
+                    <td th:text="${lots.priceLot} + '$'"></td>
+                    <td>
+                        <form method="post">
+                            <input name="lotId" type="hidden" th:value="${lots.id}">
+                            <input name="checkBasket" type="hidden" th:value="deleteFromBasket">
+                            <button class="btn btn-secondary">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a th:href="'/buyer/' + ${id} + '/orderConfirmation'" class="btn btn-outline-dark">Оформить заказ</a>
+            <a th:href="'/buyer/' + ${id} + '/catalog'" class="btn btn-dark">Вернуться в каталог</a>
+        </div>
+        <div th:case="false" class="form-check">
+            <div style="text-align: center;">
+                <h2>Пуста :(</h2>
+                <a th:href="'/buyer/' + ${id} + '/catalog'" class="btn btn-secondary">Вернуться в каталог</a><br><br>
+                <img th:src="@{/images/03.png}">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

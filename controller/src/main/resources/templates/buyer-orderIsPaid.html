@@ -1,16 +1,15 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Админка</title>
+    <title>Заказ оплачен</title>
     <header th:insert="blocks/header::header"></header>
 </head>
-
 <body>
 <div class="bg-img">
     <div id="header" class="container">
         <div class="topnav">
             <a href="buyer">Авторизация</a>
-            <a href="#">Корзина</a>
+            <a class="active" href="#">Корзина</a>
             <!--            <%&#45;&#45;            <a href="search">Поиск</a>&#45;&#45;%>-->
         </div>
     </div>
@@ -19,15 +18,19 @@
 <div class="topnav">
     <a th:href="@{/}">Главная страница</a>
     <a th:href="@{/buyer}">Пользователь</a>
-    <a href="catalog">Каталог</a>
+    <a href="#">Каталог</a>
     <!--    <%&#45;&#45;    <a href="stok">Акция</a>&#45;&#45;%>-->
-    <a class="active" th:href="@{/admin}">Админ</a>
+    <a th:href="@{/admin}">Админ</a>
 </div>
+
 
 <div class="container mt-5">
-    <h1>Админка</h1>
-    <a th:href="'/admin/listLot'" class="btn btn-dark">Список лотов</a>
-</div>
+    <div style="text-align: center">
+    <h1>Поздравляем! Вы успели купить чудесные товары :)</h1>
 
+    <a th:href="'/buyer/' + ${id} + '/catalog'" class="btn btn-dark">Вернуться в каталог</a><br><br>
+    <img th:src="@{/images/01.jpg}">
+    </div>
+</div>
 </body>
 </html>

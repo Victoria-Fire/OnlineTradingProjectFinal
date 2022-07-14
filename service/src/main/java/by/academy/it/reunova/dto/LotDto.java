@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,7 +19,9 @@ public class LotDto {
     private Integer id;
     private String nameLot;
     private String descriptionLot;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate startDateLot;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate endDateLot;
     private BigDecimal startPriceLot;
     private BigDecimal endPriceLot;

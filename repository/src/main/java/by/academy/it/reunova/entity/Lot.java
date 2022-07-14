@@ -15,6 +15,11 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQueries(value = {
+        @NamedQuery(name = "Lot.getLotOfBuyerDao", query = "select l from Lot as l join l.buyers as b where b.id = ?1 order by l.id"),
+        @NamedQuery(name = "Lot.getLotOfBuyerStatusTrueForPurchaseDao", query = "select l from Lot as l join l.buyers as b where b.id = ?1 and l.statusLot=true"),
+        @NamedQuery(name = "Lot.getLotOfBuyerStatusFalseForPurchaseDao", query = "select l from Lot as l join l.buyers as b where b.id = ?1 and l.statusLot=false")
+})
 @Table(name = "lot")
 @Entity
 public class Lot implements Serializable {

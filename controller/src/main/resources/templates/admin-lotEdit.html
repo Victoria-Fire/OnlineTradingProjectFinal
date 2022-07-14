@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Добавить Лот</title>
+    <title>Редактировать Лот</title>
     <header th:insert="blocks/header::header"></header>
 </head>
 <body>
@@ -25,14 +25,12 @@
 
 
 <div class="container mt-5 mb-5">
-    <h1>Добавить Лот</h1>
-    <form th:action="@{/admin/lotAdd}" th:method="post" th:object="${lot}">
-
+    <h1>Редактировать Лот</h1>
+    <form th:method="post" th:object="${lot}">
         <label>Название:
             <input type="text" name="nameLot" id="nameLot" th:field="*{nameLot}" required placeholder="Название"
                    class="form-control">
         </label><br/><br/>
-
         <label>Описание:
             <input type="text" name="descriptionLot" id="descriptionLot" th:field="*{descriptionLot}" required
                    placeholder="Описание" class="form-control">
@@ -66,7 +64,7 @@
             <label class="form-check-label" for="statusForAddLot">В продажу</label><br/><br/>
         </div>
 
-        <button type="submit" class="btn btn-outline-dark">Сохранить</button>
+        <button type="submit" class="btn btn-outline-dark">Обновить</button>
         <a th:href="'/admin/listLot'" class="btn btn-dark">Отмена</a>
     </form>
 </div>

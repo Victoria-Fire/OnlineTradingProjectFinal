@@ -17,5 +17,4 @@ public class BuyerDto {
     private String nameBuyer;
     private String surnameBuyer;
     private List<Lot> lots;
-
 }

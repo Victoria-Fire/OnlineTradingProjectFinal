@@ -1,7 +1,6 @@
 package by.academy.it.reunova.implementations;
 
 import by.academy.it.reunova.dto.BuyerDto;
-import by.academy.it.reunova.dto.converter.implementations.BuyerConverterImpl;
 import by.academy.it.reunova.dto.converter.interfaces.BuyerConverter;
 import by.academy.it.reunova.entity.Buyer;
 import by.academy.it.reunova.interfaces.BuyerService;
@@ -17,7 +16,7 @@ import java.util.stream.StreamSupport;
 @RequiredArgsConstructor
 public class BuyerServiceImpl implements BuyerService {
 
-    private BuyerConverter buyerConverter = new BuyerConverterImpl();
+    private final BuyerConverter buyerConverter;
     private final BuyerRepository buyerRepository;
 
     @Override
@@ -27,13 +26,13 @@ public class BuyerServiceImpl implements BuyerService {
 
     @Override
     public void deleteBuyer(Integer buyerId) {
-        Buyer buyer = buyerRepository.findById(buyerId).orElseThrow();
+        Buyer buyer = buyerRepository.findById(buyerId).orElse(null);
         buyerRepository.delete(buyer);
     }
 
     @Override
     public BuyerDto findBuyerById(Integer buyerId) {
-        Buyer buyer = buyerRepository.findById(buyerId).orElseThrow();
+        Buyer buyer = buyerRepository.findById(buyerId).orElse(null);
         return buyerConverter.toBuyerDto(buyer);
     }
 
@@ -44,5 +43,4 @@ public class BuyerServiceImpl implements BuyerService {
                 .map(buyerConverter::toBuyerDto)
                 .collect(Collectors.toList());
     }
-
 }

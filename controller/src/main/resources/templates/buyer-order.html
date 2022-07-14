@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Покупка</title>
+    <header th:insert="blocks/header::header"></header>
+</head>
+<body>
+<div class="bg-img">
+    <div id="header" class="container">
+        <div class="topnav">
+            <a href="buyer">Авторизация</a>
+            <a class="active" href="#">Корзина</a>
+            <!--            <%&#45;&#45;            <a href="search">Поиск</a>&#45;&#45;%>-->
+        </div>
+    </div>
+</div>
+
+<div class="topnav">
+    <a th:href="@{/}">Главная страница</a>
+    <a th:href="@{/buyer}">Пользователь</a>
+    <a href="#">Каталог</a>
+    <!--    <%&#45;&#45;    <a href="stok">Акция</a>&#45;&#45;%>-->
+    <a th:href="@{/admin}">Админ</a>
+</div>
+
+
+<div class="container mt-5">
+    <h1 style="text-align: center">Покупка</h1>
+
+    <h4>Ваши товары</h4>
+    <table class="table table-hover table-responsive-md">
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lots : ${listLotForPurchase}" class="alert-warning">
+            <td th:text="${lots.nameLot}"></td>
+            <td th:text="${lots.priceLot} + '$'"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h5>Окончательный итог: <a th:text="${sumPrice} + '$'"></a></h5>
+
+
+    <form method="post" th:action="'/buyer/' + ${id} + '/basket'">
+        <input name="lotId" type="hidden" th:value="1">
+        <input name="checkBasket" type="hidden" th:value="returnToBasketFromPurchase">
+        <a th:href="'/buyer/' + ${id} + '/orderIsPaid'" class="btn btn-outline-dark">Купить</a>
+        <button class="btn btn-dark">Вернуться в корзину</button>
+    </form>
+</div>
+</body>
+</html>
